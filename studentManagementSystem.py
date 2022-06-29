@@ -12,7 +12,8 @@ class Student:
         self._phone = phone
         self._classes = classes
         self._enrolled = True
-
+        self._studintID = 1523
+        
         # Append to student_list
         student_list.append(self)
 
@@ -43,6 +44,9 @@ class Student:
         for c in self._classes:
             class_list += c + " "
         return class_list
+
+    def get_studintID(self):
+        '''gets the studint id'''
     
 # List to store students
 student_list = []
