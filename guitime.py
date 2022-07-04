@@ -11,6 +11,6 @@ root.geometry("800x500")
 
 # add a label
 heading_lbl = Label(root, text="brak the bad", fg="blue", font=("papyrus, 25"))
-heading
+heading_lbl.pack()
 
 root.mainloop()
