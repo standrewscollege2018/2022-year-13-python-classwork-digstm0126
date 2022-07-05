@@ -1,0 +1,68 @@
+class Item():
+
+    def __init__(self, name, value):
+
+        self._name = name
+        self._value = value
+
+        all_items.append(self)
+
+        #adds all the names to make the drop down
+        item_name.append(name)
+
+   
+    def get_name(self):
+        ''' Return name of item '''
+
+        return self._name
+
+    def get_value(self):
+        ''' Return value of item '''
+
+        return self._value
+    
+
+def generate_items():
+    ''' Import students from a csv file'''
+    # Import the csv package to enable the program to work with a csv
+    import csv
+    # Open the csv file, call is csvfile
+    with open('products2.csv', newline='') as csvfile:
+        # use the reader() function and put the results into a variable called filereader
+        filereader = csv.reader(csvfile)
+        # Loop through the csv, one row at a time
+        
+        for line in filereader:
+            # For each row, create a new item
+            
+            Item(line[0], int(line[1]))
+
+
+item_name = []
+
+all_items = []
+
+generate_items()
+
+from tkinter import *
+root = Tk()
+root.title("opption")
+root.geometry("800x500")
+
+# option menu
+# stores the selctrion
+selected_item = StringVar()
+# set the intioal value
+# selected_item.set(item_name[0]) 
+
+names_menu = OptionMenu(root, selected_item, *item_name)
+names_menu.grid(row=0)
+
+for i in len(all_items):
+    
+
+
+
+root.mainloop()
+
+
