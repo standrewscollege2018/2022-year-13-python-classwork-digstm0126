@@ -6,10 +6,6 @@ class Item():
         self._value = value
 
         all_items.append(self)
-
-        #adds all the names to make the drop down
-        item_name.append(name)
-
    
     def get_name(self):
         ''' Return name of item '''
@@ -38,12 +34,24 @@ def generate_items():
             Item(line[0], int(line[1]))
 
 
+def display_selection():
+    ''' get  the selected item from the option menu and then lets the lale desplay it '''
+
+    # loop throue the list  to get the value
+    for i in all_items:
+        if i.get_name() == selected_item.get():
+            value = i.get_value()
+
+    details.set(f"{selected_item.get()} costs ${value}")
+
+
 item_name = []
 
 all_items = []
 
 generate_items()
 
+from select import select
 from tkinter import *
 root = Tk()
 root.title("opption")
@@ -53,13 +61,20 @@ root.geometry("800x500")
 # stores the selctrion
 selected_item = StringVar()
 # set the intioal value
-# selected_item.set(item_name[0]) 
+selected_item.set(item_name[0]) 
 
 names_menu = OptionMenu(root, selected_item, *item_name)
 names_menu.grid(row=0)
 
-for i in len(all_items):
-    
+
+# button
+select_btn = Button(root, text="select",command=display_selection, width=20)
+select_btn.grid(row=0, column=1)
+
+# lable
+details = StringVar()
+details_lbl = Label(root, textvariable=details)
+details_lbl.grid(row=1, column=1)
 
 
 
