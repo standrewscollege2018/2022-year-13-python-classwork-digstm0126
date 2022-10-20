@@ -5,7 +5,7 @@ import string
 class Movie():
 
     # adds all of the posable values to the movie object
-    def init__(self, name, price, time, seats, theatre):
+    def __init__(self, name, price, time, seats, theatre):
 
         self._name = name.strip()
         self._price = price
